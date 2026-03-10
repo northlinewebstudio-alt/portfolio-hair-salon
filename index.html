@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Cristina Trohani | Coafură & Styling București</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', 'Segoe UI', sans-serif; line-height: 1.6; color: #333; }
+        
+        /* Header */
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+        nav { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 300; color: #d4af37; letter-spacing: 2px; }
+        .logo span { font-weight: 700; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: #d4af37; }
+        .mobile-menu { display: none; color: #d4af37; font-size: 1.5rem; cursor: pointer; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"%3E<rect fill="white" width="100" height="100"/%3E</svg%3E'); min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
+        .hero-content { max-width: 800px; padding: 2rem; }
+        .hero h1 { font-size: 3.5rem; font-weight: 300; margin-bottom: 1rem; }
+        .hero h1 span { color: #d4af37; font-weight: 700; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; font-weight: 300; }
+        .btn { display: inline-block; padding: 1rem 2.5rem; border: 2px solid #d4af37; color: #d4af37; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s; }
+        .btn:hover { background: #d4af37; color: #1a1a2e; }
+        .btn-filled { background: #d4af37; color: #1a1a2e; }
+        .btn-filled:hover { background: #fff; border-color: #fff; }
+        
+        /* Services */
+        .services { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem; }
+        .section-title span { color: #d4af37; font-weight: 700; }
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 3rem; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .service-card { text-align: center; padding: 2rem; }
+        .service-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .service-card p { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        .service-price { color: #d4af37; font-size: 1.3rem; font-weight: 700; }
+        
+        /* Team */
+        .team { background: #f9f9f9; padding: 5rem 2rem; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 3rem auto 0; }
+        .team-member { background: #fff; text-align: center; padding: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .team-avatar { width: 150px; height: 150px; background: linear-gradient(135deg, #1a1a2e, #16213e); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: #d4af37; font-size: 4rem; }
+        .team-member h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .team-member .role { color: #d4af37; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 1rem; }
+        
+        /* Gallery */
+        .gallery { padding: 5rem 2rem; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 1000px; margin: 3rem auto 0; }
+        .gallery-item { aspect-ratio: 1; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; color: #d4af37; font-size: 3rem; transition: transform 0.3s; }
+        .gallery-item:hover { transform: scale(1.05); }
+        
+        /* Booking */
+        .booking { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 5rem 2rem; color: #fff; text-align: center; }
+        .booking h2 { font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem; }
+        .booking h2 span { color: #d4af37; }
+        .booking-form { max-width: 500px; margin: 3rem auto 0; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .form-group input, .form-group select { width: 100%; padding: 1rem; border: 1px solid #d4af37; background: transparent; color: #fff; font-family: inherit; }
+        .form-group input::placeholder { color: #888; }
+        .btn-submit { width: 100%; padding: 1rem; background: #d4af37; border: none; color: #1a1a2e; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
+        
+        /* Contact */
+        .contact { padding: 5rem 2rem; text-align: center; }
+        .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 800px; margin: 3rem auto 0; }
+        .contact-item { padding: 2rem; }
+        .contact-item h4 { color: #d4af37; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
+        
+        /* Footer */
+        footer { background: #0a0a0a; color: #666; text-align: center; padding: 2rem; }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><span>CRISTINA</span> TROHANI</div>
+            <ul class="nav-links">
+                <li><a href="#acasa">Acasă</a></li>
+                <li><a href="#servicii">Servicii</a></li>
+                <li><a href="#echipa">Echipa</a></li>
+                <li><a href="#galerie">Lucrări</a></li>
+                <li><a href="#programare">Programare</a></li>
+            </ul>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <section class="hero" id="acasa">
+        <div class="hero-content">
+            <h1>Transformă-ți <span>Look-ul</span></h1>
+            <p>Salon de coafură premium în București - Tunsori moderne, vopsit profesional, styling de eveniment</p>
+            <a href="#programare" class="btn btn-filled">Programează-te</a>
+            <a href="#servicii" class="btn" style="margin-left: 1rem;">Servicii</a>
+        </div>
+    </section>
+
+    <section class="services" id="servicii">
+        <h2 class="section-title">Servicii <span>Premium</span></h2>
+        <p class="section-subtitle">Oferim o gamă completă de servicii de înfrumusețare</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Tuns</h3>
+                <p>Tunsori personalizate pentru femei și bărbați, adaptate formei feței</p>
+                <div class="service-price">de la €25</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Vopsit</h3>
+                <p>Vopsit complet, șuvițe, balayage, ombré cu produse profesionale</p>
+                <div class="service-price">de la €45</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">👰</div>
+                <h3>Coafat Evenimente</h3>
+                <p>Coafuri elegante pentru mirese, ocazii speciale și evenimente</p>
+                <div class="service-price">de la €60</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💆</div>
+                <h3>Tratamente</h3>
+                <p>Tratamente keratină, hidratare profundă, reconstrucție păr</p>
+                <div class="service-price">de la €40</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="echipa">
+        <h2 class="section-title">Echipa <span>Noastră</span></h2>
+        <p class="section-subtitle">Profesioniști pasionați, la curent cu ultimele tendințe</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-avatar">👩</div>
+                <h3>Cristina Trohani</h3>
+                <div class="role">Fondator & Stylist Principal</div>
+                <p>15 ani experiență, specializare în coloristică</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="team-avatar">👩</div>
+                <h3>Maria Popescu</h3>
+                <div class="role">Stylist Senior</div>
+                <p>Expertă în tunsori moderne și styling</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="team-avatar">👨</div>
+                <h3>Andrei Ionescu</h3>
+                <div class="role">Barber</div>
+                <p>Specialist în tunsori bărbați și barbă</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="galerie">
+        <h2 class="section-title">Lucrările <span>Noastre</span></h2>
+        <p class="section-subtitle">O parte din transformările realizate în salonul nostru</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">💇</div>
+            <div class="gallery-item">✂️</div>
+            <div class="gallery-item">🎨</div>
+            <div class="gallery-item">👰</div>
+        </div>
+    </section>
+
+    <section class="booking" id="programare">
+        <h2>Programează-te <span>Online</span></h2>
+        <p>Completează formularul și te contactăm pentru confirmare</p>
+        
+        <form class="booking-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" placeholder="Prenume" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Nume" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="tel" placeholder="Telefon" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Alege serviciul</option>
+                        <option>Tuns</option>
+                        <option>Vopsit</option>
+                        <option>Coafat Eveniment</option>
+                        <option>Tratament</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="date" placeholder="Data" required>
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Ora preferată</option>
+                        <option>10:00</option>
+                        <option>12:00</option>
+                        <option>14:00</option>
+                        <option>16:00</option>
+                        <option>18:00</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">Trimite Programarea</button>
+        </form>
+    </section>
+
+    <section class="contact">
+        <h2 class="section-title">Contact</span></h2>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>📞 Telefon</h4>
+                <p>0722 XXX XXX</p>
+            </div>
+            
+            <div class="contact-item">
+                <h4>📍 Adresă</h4>
+                <p>București, Sector [X]</p>
+            </div>
+            
+            <div class="contact-item">
+                <h4>🕐 Program</h4>
+                <p>Mar-Sâm: 10-20, Dum: 10-16</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Salon Cristina Trohani | Website creat de NorthLine Web Studio</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
